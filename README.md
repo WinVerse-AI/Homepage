@@ -22,8 +22,8 @@ The contact form uses a `mailto:` hand-off so visitors review and send their mes
 
 - Investigational technology only; no treatment or efficacy claims.
 - Early published evidence is distinguished from the ongoing controlled evidence pathway.
-- UHN/KITE is identified as the research origin without implying endorsement, ownership by WinVerse, or regulatory approval.
-- Any WinVerse technology rights are described as subject to definitive agreements.
+- UHN/KITE is identified as the research origin without implying endorsement, ownership by WinVerse™, or regulatory approval.
+- Any WinVerse™ technology rights are described as subject to definitive agreements.
 
 ## Local preview
 

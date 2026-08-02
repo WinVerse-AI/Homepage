@@ -31,7 +31,7 @@
     headerHost.innerHTML = [
       '<header class="site-header" data-header>',
       '<div class="shell header-grid">',
-      '<a class="brand" href="index.html" aria-label="WinVerse home">',
+      '<a class="brand" href="index.html" aria-label="WinVerse™ home">',
       '<img class="brand-logo" src="assets/winverse-logo-full.png" alt="WinVerse™">',
       '<span class="brand-locations" data-i18n="brand.locations"></span>',
       '</a>',
