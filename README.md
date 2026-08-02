@@ -5,12 +5,16 @@ Responsive static website for WinVerse™ and the investigational SerotoniX™ f
 ## Site structure
 
 - `index.html` — focused homepage
-- `serotonix.html` — product definition and current programme
-- `evidence.html` — published record and evidence boundaries
 - `platform.html` — productisation architecture and engineering schematic
+- `serotonix.html` — nested Platform programme, product definition and current work
+- `evidence.html` — published record and evidence boundaries
 - `company.html` — operating model and partnership pathway
+- `about.html` — purpose, connected presence and leadership
+- `contact.html` — structured contact form addressed to `winverse.ai@gmail.com`
 
-The primary navigation opens each subject as a separate page rather than scrolling through one long page.
+The primary navigation opens each subject as a separate page rather than scrolling through one long page. SerotoniX™ appears within the Platform navigation group.
+
+The contact form uses a `mailto:` hand-off so visitors review and send their message through their own email application. This avoids routing submitted data through an unapproved third-party form service on the static GitHub Pages site.
 
 ## Safety and evidence boundary
 

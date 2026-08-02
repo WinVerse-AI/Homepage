@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contact WinVerse™ about research, clinical, engineering, manufacturing, regulatory, investment or strategic collaboration." />
+    <meta name="theme-color" content="#075440" />
+    <title>Contact Us | WinVerse™</title>
+    <link rel="icon" type="image/png" href="assets/winverse-mark.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="contact">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="WinVerse home"><img class="brand-logo" src="assets/winverse-logo-full.png" alt="WinVerse™" /><span class="brand-locations">Shanghai · Toronto · Tokyo</span></a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span></span><span></span><span></span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
+          <a href="index.html">Home</a>
+          <div class="nav-group" data-nav-group>
+            <div class="nav-parent-row"><a class="nav-parent-link" href="platform.html">Platform</a><button class="nav-submenu-toggle" type="button" aria-expanded="false" aria-controls="platform-submenu" data-submenu-toggle><span class="sr-only">Open Platform menu</span><span class="nav-chevron" aria-hidden="true"></span></button></div>
+            <div class="nav-submenu" id="platform-submenu"><a href="serotonix.html">SerotoniX™</a></div>
+          </div>
+          <a href="evidence.html">Evidence</a><a href="company.html">Company</a><a href="about.html">About Us</a><a class="nav-cta" href="contact.html" aria-current="page">Contact Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page-main">
+      <section class="page-hero page-hero-company" aria-labelledby="page-title">
+        <div class="container page-hero-grid">
+          <div>
+            <p class="page-index">05 · Contact Us</p>
+            <h1 id="page-title">Start with the right conversation.</h1>
+            <p class="page-lede">We welcome serious enquiries from research, clinical, engineering, manufacturing, regulatory, investment and strategic partners.</p>
+          </div>
+          <aside class="status-panel status-panel-light" aria-label="Contact response">
+            <p>Contact</p>
+            <strong>winverse.ai@gmail.com</strong>
+            <span>Enquiries are reviewed by the WinVerse™ team.</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="contact-section" aria-labelledby="contact-form-title">
+        <div class="container contact-layout">
+          <div class="contact-intro">
+            <p class="section-label">Contact WinVerse™</p>
+            <h2 id="contact-form-title">Tell us where you can add evidence, capability or reach.</h2>
+            <p>Use the form for partnership enquiries or general questions. Please do not include confidential patient information, medical records or other sensitive personal data.</p>
+            <div class="contact-direct"><span>Prefer direct email?</span><a href="mailto:winverse.ai@gmail.com?subject=WinVerse%20website%20enquiry">winverse.ai@gmail.com</a></div>
+          </div>
+
+          <div class="contact-form-card">
+            <form class="contact-form" action="mailto:winverse.ai@gmail.com" method="post" enctype="text/plain" data-contact-form>
+              <div class="form-field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required /></div>
+              <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+              <div class="form-field"><label for="organisation">Organisation <span aria-hidden="true">(optional)</span></label><input id="organisation" name="organisation" type="text" autocomplete="organization" /></div>
+              <div class="form-field">
+                <label for="topic">Enquiry type</label>
+                <select id="topic" name="topic" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option value="Partnership">Partnership</option>
+                  <option value="Research collaboration">Research collaboration</option>
+                  <option value="Clinical collaboration">Clinical collaboration</option>
+                  <option value="Engineering or manufacturing">Engineering or manufacturing</option>
+                  <option value="Regulatory or quality">Regulatory or quality</option>
+                  <option value="Investment">Investment</option>
+                  <option value="General enquiry">General enquiry</option>
+                </select>
+              </div>
+              <div class="form-field form-field-full"><label for="message">Message</label><textarea id="message" name="message" required placeholder="How would you like to work with WinVerse™?"></textarea></div>
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">Prepare email <span aria-hidden="true">→</span></button>
+                <p class="form-note">For privacy, this static website does not send your details to an unapproved form provider. The button opens your email application with the completed message addressed to winverse.ai@gmail.com.</p>
+                <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-top"><a class="footer-brand" href="index.html">WinVerse™</a><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="platform.html">Platform</a><a href="serotonix.html">SerotoniX™</a><a href="evidence.html">Evidence</a><a href="company.html">Company</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a></nav></div>
+      <div class="container footer-bottom"><p>© <span data-year></span> WinVerse™. All rights reserved.</p><p>Investigational research technology. Not approved for clinical treatment. No affiliation or endorsement by UHN is implied.</p></div>
+    </footer>
+  </body>
+</html>
