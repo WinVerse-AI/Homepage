@@ -1,124 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="WinVerse™ is advancing SerotoniX™, an investigational facial neuromodulation research platform, from personalised prototypes towards reproducible productisation."
-    />
-    <meta name="theme-color" content="#f5f1e8" />
-    <meta property="og:title" content="WinVerse™ — SerotoniX™" />
-    <meta property="og:description" content="Engineering the next interface for facial neuromodulation research." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/hero-humanist.png" />
-    <title>WinVerse™ — SerotoniX™ Research Platform</title>
-    <link rel="icon" type="image/png" href="assets/winverse-mark.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="WinVerse is a health-technology company developing SerotoniX™, its first and flagship investigational facial FES product.">
+    <meta name="theme-color" content="#f4f0e7">
+    <meta property="og:title" content="WinVerse™ — Translational Health Technology">
+    <meta property="og:description" content="Clinically originated science, engineered into products that can scale.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/hero-humanist.webp">
+    <title>WinVerse™ — Translational Health Technology</title>
+    <link rel="icon" type="image/png" href="assets/winverse-mark.png">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="translations.js"></script>
     <script defer src="script.js"></script>
   </head>
-  <body class="home-page" data-page="home">
-    <a class="skip-link" href="#main">Skip to content</a>
+  <body data-page="home">
+    <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+    <div data-site-header></div>
 
-    <header class="site-header" data-header>
-      <div class="container header-inner">
-        <a class="brand" href="index.html" aria-label="WinVerse home">
-          <img class="brand-logo" src="assets/winverse-logo-full.png" alt="WinVerse™" />
-          <span class="brand-locations">Shanghai · Toronto · Singapore</span>
-        </a>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Open navigation"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          data-menu-toggle
-        >
-          <span></span><span></span><span></span>
-        </button>
-
-        <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
-          <a href="index.html" aria-current="page">Home</a>
-          <div class="nav-group" data-nav-group>
-            <div class="nav-parent-row">
-              <a class="nav-parent-link" href="platform.html">Platform</a>
-              <button class="nav-submenu-toggle" type="button" aria-expanded="false" aria-controls="platform-submenu" data-submenu-toggle>
-                <span class="sr-only">Open Platform menu</span><span class="nav-chevron" aria-hidden="true"></span>
-              </button>
-            </div>
-            <div class="nav-submenu" id="platform-submenu"><a href="serotonix.html">SerotoniX™</a></div>
+    <main id="main" class="screen-main">
+      <section class="shell page-stage home-stage" aria-labelledby="page-title">
+        <div class="page-copy">
+          <p class="eyebrow" data-i18n="home.eyebrow">Company · Translational health technology</p>
+          <span class="status-chip" data-i18n="footer.status">Investigational technology · Not approved for treatment</span>
+          <h1 class="page-title" id="page-title" data-i18n="home.title">Building clinically originated science into products that can scale.</h1>
+          <p class="page-lede" data-i18n="home.lede">WinVerse is the company. SerotoniX™ is its first and flagship product—an investigational facial FES research platform.</p>
+          <div class="actions">
+            <a class="button button-primary" href="serotonix.html" data-i18n="home.primary">Explore SerotoniX™</a>
+            <a class="button button-secondary" href="evidence.html" data-i18n="home.secondary">See the evidence</a>
           </div>
-          <a href="evidence.html">Evidence</a>
-          <a href="company.html">Company</a>
-          <a href="about.html">About Us</a>
-          <a class="nav-cta" href="contact.html">Contact Us</a>
-        </nav>
-      </div>
-    </header>
-
-    <main id="main">
-      <section class="home-hero" aria-labelledby="hero-title">
-        <div class="home-hero-media" aria-hidden="true">
-          <img src="assets/hero-humanist.png" alt="" />
-        </div>
-        <div class="home-hero-shade" aria-hidden="true"></div>
-
-        <div class="container home-hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Investigational technology · Not approved for treatment</p>
-            <h1 id="hero-title">Engineering the next interface for facial neuromodulation research.</h1>
-            <p class="hero-lede">
-              SerotoniX™ is a research-origin facial functional electrical stimulation platform moving
-              from personalised prototypes towards reproducible, scalable productisation.
-            </p>
-            <div class="hero-actions" aria-label="Primary actions">
-              <a class="button button-primary" href="evidence.html">
-                Explore the evidence <span aria-hidden="true">→</span>
-              </a>
-              <a class="button button-secondary" href="contact.html?topic=partnership">
-                Partner with us <span aria-hidden="true">→</span>
-              </a>
-            </div>
+          <div class="insight-rail">
+            <div class="insight"><span data-i18n="home.stat1Label">Company</span><strong data-i18n="home.stat1Value">WinVerse</strong></div>
+            <div class="insight"><span data-i18n="home.stat2Label">Flagship product</span><strong data-i18n="home.stat2Value">SerotoniX™</strong></div>
+            <div class="insight"><span data-i18n="home.stat3Label">Footprint</span><strong data-i18n="home.stat3Value">Shanghai · Toronto · Singapore</strong></div>
           </div>
         </div>
 
-        <div class="proof-ribbon" aria-label="Research status">
-          <div class="container proof-grid">
-            <a href="evidence.html#research-origin">
-              <span>Research origin</span>
-              <strong>UHN / KITE</strong>
-            </a>
-            <a href="evidence.html#published-foundation">
-              <span>Published</span>
-              <strong>Early pilot evidence</strong>
-            </a>
-            <a href="evidence.html#controlled-pathway">
-              <span>Evidence pathway</span>
-              <strong>Sham-controlled trial protocol</strong>
-            </a>
-          </div>
-        </div>
+        <figure class="visual-panel">
+          <img src="assets/hero-humanist.webp" alt="Abstract layered facial form with precise emerald connection points">
+          <figcaption class="visual-caption">
+            <strong data-i18n="home.visualTitle">Humanist precision</strong>
+            <span data-i18n="home.visualNote">Clinical-origin science · Disciplined productisation</span>
+          </figcaption>
+        </figure>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-top">
-        <a class="footer-brand" href="index.html">WinVerse™</a>
-        <nav aria-label="Footer navigation">
-          <a href="index.html">Home</a>
-          <a href="platform.html">Platform</a>
-          <a href="serotonix.html">SerotoniX™</a>
-          <a href="evidence.html">Evidence</a>
-          <a href="company.html">Company</a>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact Us</a>
-        </nav>
-      </div>
-      <div class="container footer-bottom">
-        <p>© <span data-year></span> WinVerse™. All rights reserved.</p>
-        <p>Investigational research technology. Not approved for clinical treatment. No affiliation or endorsement by UHN is implied.</p>
-      </div>
-    </footer>
+    <div data-site-footer></div>
   </body>
 </html>

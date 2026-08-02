@@ -1,280 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="A critical, source-linked review of the mechanistic, clinical and product-development evidence behind the SerotoniX™ research pathway."
-    />
-    <meta name="theme-color" content="#f5f1e8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A critical appraisal of the published facial-FES evidence supporting continued SerotoniX research.">
+    <meta name="theme-color" content="#f4f0e7">
     <title>Evidence | WinVerse™</title>
-    <link rel="icon" type="image/png" href="assets/winverse-mark.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/winverse-mark.png">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="translations.js"></script>
     <script defer src="script.js"></script>
   </head>
   <body data-page="evidence">
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" data-header>
-      <div class="container header-inner">
-        <a class="brand" href="index.html" aria-label="WinVerse home">
-          <img class="brand-logo" src="assets/winverse-logo-full.png" alt="WinVerse™" />
-          <span class="brand-locations">Shanghai · Toronto · Singapore</span>
-        </a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span></span><span></span><span></span></button>
-        <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
-          <a href="index.html">Home</a>
-          <div class="nav-group" data-nav-group>
-            <div class="nav-parent-row"><a class="nav-parent-link" href="platform.html">Platform</a><button class="nav-submenu-toggle" type="button" aria-expanded="false" aria-controls="platform-submenu" data-submenu-toggle><span class="sr-only">Open Platform menu</span><span class="nav-chevron" aria-hidden="true"></span></button></div>
-            <div class="nav-submenu" id="platform-submenu"><a href="serotonix.html">SerotoniX™</a></div>
-          </div>
-          <a href="evidence.html" aria-current="page">Evidence</a><a href="company.html">Company</a><a href="about.html">About Us</a><a class="nav-cta" href="contact.html">Contact Us</a>
-        </nav>
-      </div>
-    </header>
+    <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+    <div data-site-header></div>
 
-    <main id="main" class="page-main">
-      <section class="page-hero evidence-hero" aria-labelledby="page-title">
-        <div class="container page-hero-grid">
-          <div>
-            <p class="page-index">02 · Evidence</p>
-            <h1 id="page-title">A credible hypothesis. An encouraging signal. Not yet clinical proof.</h1>
-            <p class="page-lede">
-              The published record supports continued investigation of facial neuromuscular stimulation. It does not yet establish
-              that SerotoniX™ is safe or effective as a treatment.
-            </p>
+    <main id="main" class="screen-main">
+      <section class="shell page-stage evidence-stage" aria-labelledby="page-title">
+        <div class="page-copy">
+          <p class="eyebrow" data-i18n="evidence.eyebrow">Evidence position</p>
+          <h1 class="page-title" id="page-title" data-i18n="evidence.title">Plausible mechanism. Preliminary signal. No controlled efficacy result yet.</h1>
+          <p class="page-lede" data-i18n="evidence.lede">The literature supports continued investigation—not a treatment claim. WinVerse separates what is known, suggested and still unresolved.</p>
+          <div class="actions">
+            <button class="button button-primary" type="button" data-dialog-open="evidence-dossier" data-i18n="evidence.primary">Open evidence dossier</button>
+            <a class="button button-secondary" href="https://clinicaltrials.gov/study/NCT06261177" target="_blank" rel="noreferrer" data-i18n="evidence.registry">View trial registry</a>
           </div>
-          <aside class="status-panel evidence-status-panel" aria-label="Current evidence position">
-            <p>Current evidence position</p>
-            <strong>Hypothesis-generating</strong>
-            <ul>
-              <li><span>Mechanism</span><b>Supported</b></li>
-              <li><span>Clinical signal</span><b>Preliminary</b></li>
-              <li><span>Controlled efficacy</span><b>Unresolved</b></li>
-            </ul>
-            <small>Literature reviewed 2 August 2026</small>
-          </aside>
-        </div>
-      </section>
-
-      <section class="content-section evidence-verdict-section" aria-labelledby="verdict-title">
-        <div class="container">
-          <div class="section-heading evidence-heading-wide">
-            <p class="section-label">Evidence verdict</p>
-            <h2 id="verdict-title">The evidence is a chain of plausibility—not an efficacy package.</h2>
-            <p>Each layer answers a different question. Collapsing them into one “proof” claim would overstate the science.</p>
-          </div>
-          <div class="verdict-grid">
-            <article class="verdict-card">
-              <span class="verdict-number">01</span>
-              <p class="card-kicker">Mechanistic plausibility</p>
-              <h3>Supported in healthy-human studies</h3>
-              <p>Controlled laboratory studies show that precisely activating facial muscles can alter felt or perceived emotion. This supports the proposed pathway, not a clinical benefit.</p>
-              <span class="evidence-level evidence-level-supported">Supported</span>
-            </article>
-            <article class="verdict-card">
-              <span class="verdict-number">02</span>
-              <p class="card-kicker">Clinical signal</p>
-              <h3>Encouraging, but uncontrolled</h3>
-              <p>A 10-person study reported symptom-score improvements after 10 sessions. With no sham group and no durability follow-up, causation cannot be inferred.</p>
-              <span class="evidence-level evidence-level-preliminary">Preliminary</span>
-            </article>
-            <article class="verdict-card verdict-card-critical">
-              <span class="verdict-number">03</span>
-              <p class="card-kicker">Clinical efficacy</p>
-              <h3>Not established</h3>
-              <p>A randomised sham-controlled pilot protocol has been published, but a protocol is a plan. No controlled outcome publication was identified in this review.</p>
-              <span class="evidence-level evidence-level-unresolved">Unresolved</span>
-            </article>
-            <article class="verdict-card">
-              <span class="verdict-number">04</span>
-              <p class="card-kicker">Product translation</p>
-              <h3>Prototype feasibility described</h3>
-              <p>The 2025 protocol documents a customised take-home mask workflow. It does not establish scalable manufacture, usability, regulatory status or commercial readiness.</p>
-              <span class="evidence-level evidence-level-developing">Developing</span>
-            </article>
+          <div class="insight-rail">
+            <div class="insight"><span data-i18n="evidence.metric1Label">Mechanism</span><strong data-i18n="evidence.metric1Value">Supported</strong></div>
+            <div class="insight"><span data-i18n="evidence.metric2Label">Clinical signal</span><strong data-i18n="evidence.metric2Value">Preliminary</strong></div>
+            <div class="insight"><span data-i18n="evidence.metric3Label">Controlled efficacy</span><strong data-i18n="evidence.metric3Value">Unresolved</strong></div>
           </div>
         </div>
-      </section>
 
-      <section class="content-section content-section-paper" aria-labelledby="autopsy-title">
-        <div class="container">
-          <div class="section-heading evidence-heading-wide">
-            <p class="section-label">Paper-by-paper autopsy</p>
-            <h2 id="autopsy-title">What each publication adds—and what it cannot prove.</h2>
-            <p>Sample size, comparator and outcome type determine how much weight a result can carry.</p>
-          </div>
-          <div class="evidence-table-wrap" tabindex="0" aria-label="Scrollable evidence table">
-            <table class="evidence-table">
-              <caption class="sr-only">Critical appraisal of the published evidence relevant to facial neuromuscular stimulation</caption>
-              <thead>
-                <tr><th>Study</th><th>Design</th><th>Useful result</th><th>Critical interpretation</th><th>Weight</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"><a href="https://www.neuromodulationjournal.org/article/S1094-7159(14)60038-6/abstract" target="_blank" rel="noreferrer">Zariffa et al.<span>2014</span></a></th>
-                  <td>Single-session controlled study; 12 healthy participants received stimulation and 12 were controls.</td>
-                  <td>No significant between-group differences on the primary “happy”, Joviality or Positive Affect outcomes. Several secondary items differed.</td>
-                  <td>The primary endpoints were negative. The study shows the effect is difficult to target and should not be presented as positive clinical evidence.</td>
-                  <td><span class="evidence-level evidence-level-mixed">Mixed</span></td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://link.springer.com/article/10.1186/s12938-019-0730-6" target="_blank" rel="noreferrer">Kapadia et al.<span>2019</span></a></th>
-                  <td>Open-label feasibility pilot; 10 people with moderate-to-severe major depressive disorder; no comparator.</td>
-                  <td>After 10 sessions, mean HAM-D fell from 16.2 to 8.1 and mean IDS from 35 to 21. All 10 completed the initial course.</td>
-                  <td>The signal is notable, but expectation, attention, time, regression to the mean and concurrent care cannot be separated from treatment effect.</td>
-                  <td><span class="evidence-level evidence-level-preliminary">Preliminary</span></td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://link.springer.com/article/10.1007/s00221-020-05777-z" target="_blank" rel="noreferrer">Ginatempo et al.<span>2020</span></a></th>
-                  <td>Laboratory TMS study in 30 healthy participants; observation of emotional faces, not a stimulation treatment study.</td>
-                  <td>Happy faces selectively changed inhibition in the face motor cortex compared with neutral faces.</td>
-                  <td>Useful indirect evidence that emotion and facial motor circuitry interact. It says nothing about therapeutic efficacy.</td>
-                  <td><span class="evidence-level evidence-level-indirect">Indirect</span></td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://link.springer.com/article/10.1186/s12984-023-01187-8" target="_blank" rel="noreferrer">Demchenko et al.<span>2023</span></a></th>
-                  <td>Focused narrative review integrating facial feedback, interoception and FES literature.</td>
-                  <td>Builds a coherent proposed mechanism and identifies an emotion-to-motor loop as a possible target.</td>
-                  <td>A narrative review synthesises prior work; it is not a systematic review, meta-analysis or new efficacy experiment.</td>
-                  <td><span class="evidence-level evidence-level-context">Context</span></td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://pubmed.ncbi.nlm.nih.gov/39298241/" target="_blank" rel="noreferrer">Efthimiou et al.<span>2025</span></a></th>
-                  <td>Preregistered experiment; 58 healthy participants; muscle, intensity and discomfort were controlled.</td>
-                  <td>Stronger stimulation of smile-related muscle produced more positive reported emotion than stimulation of the comparison muscle.</td>
-                  <td>Independent, stronger mechanistic support. Participants were healthy and exposure was brief, so it is not clinical evidence.</td>
-                  <td><span class="evidence-level evidence-level-supported">Mechanism</span></td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://www.nature.com/articles/s44271-025-00281-y" target="_blank" rel="noreferrer">Baker et al.<span>2025</span></a></th>
-                  <td>EEG and stimulation experiment; 51 healthy participants; early, late and no-stimulation conditions.</td>
-                  <td>Stimulation increased the likelihood that neutral faces were labelled happy; no corresponding shift was reported for clearly emotional faces.</td>
-                  <td>Supports a small, context-specific perceptual mechanism—not symptom improvement, durability or clinical benefit.</td>
-                  <td><span class="evidence-level evidence-level-supported">Mechanism</span></td>
-                </tr>
-                <tr>
-                  <th scope="row"><a href="https://link.springer.com/article/10.1186/s40814-025-01642-4" target="_blank" rel="noreferrer">Gholamali Nezhad et al.<span>2025</span></a></th>
-                  <td>Published protocol for a double-blind, 1:1 randomised, sham-controlled pilot with 20 participants.</td>
-                  <td>Defines 20 take-home sessions over four weeks and prioritises feasibility, tolerability and safety outcomes.</td>
-                  <td>The design addresses major weaknesses of the 2019 pilot. Until results are reported, it contributes no efficacy estimate.</td>
-                  <td><span class="evidence-level evidence-level-protocol">Protocol</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="published-foundation" aria-labelledby="pilot-title">
-        <div class="container evidence-figure-layout">
-          <div class="evidence-figure-copy">
-            <p class="section-label">2019 clinical signal</p>
-            <h2 id="pilot-title">The numbers improved. The study design prevents a causal claim.</h2>
-            <p>The open-label pilot is the most clinically relevant outcome study in the cited record—and also the largest source of overclaim risk.</p>
-            <div class="metric-grid">
-              <article><span>HAM-D</span><strong>16.2 → 8.1</strong><p>Mean change 8.1; p = .005</p></article>
-              <article><span>IDS</span><strong>35 → 21</strong><p>Mean change 14; p = .008</p></article>
-              <article><span>Completion</span><strong>10 / 10</strong><p>Completed the first 10 sessions</p></article>
-              <article><span>Comparator</span><strong>None</strong><p>No sham or usual-care control</p></article>
-            </div>
-            <div class="critical-note">
-              <strong>Read the p-values correctly.</strong>
-              <p>They test within-person change, not active stimulation against sham. The paper also reported no significant change on its visual analogue measure or the positive-affect domains of PANAS.</p>
+        <figure class="visual-panel">
+          <img src="assets/evidence-layers.webp" alt="Three-layer abstract evidence pathway with emerald evidence markers and an amber uncertainty marker">
+          <div class="evidence-board">
+            <span data-i18n="evidence.statusLabel">Current verdict</span>
+            <strong data-i18n="evidence.statusValue">Hypothesis-generating</strong>
+            <div class="evidence-metrics">
+              <div class="evidence-metric"><span data-i18n="evidence.metric1Label">Mechanism</span><strong data-i18n="evidence.metric1Value">Supported</strong></div>
+              <div class="evidence-metric"><span data-i18n="evidence.metric2Label">Clinical signal</span><strong data-i18n="evidence.metric2Value">Preliminary</strong></div>
+              <div class="evidence-metric"><span data-i18n="evidence.metric3Label">Controlled efficacy</span><strong data-i18n="evidence.metric3Value">Unresolved</strong></div>
             </div>
           </div>
-          <figure class="paper-figure paper-figure-outcomes">
-            <a href="assets/evidence-pilot-outcomes-2019.jpg" target="_blank" aria-label="Open the pilot outcome figure at full size">
-              <img src="assets/evidence-pilot-outcomes-2019.jpg" alt="Boxplots showing lower HAM-D and IDS scores after ten sessions than at baseline in the uncontrolled ten-person pilot" />
-            </a>
-            <figcaption>
-              <span>Published figure · not WinVerse data</span>
-              <p>HAM-D and IDS distributions at baseline and after 10 sessions. Reproduced without substantive alteration from Fig. 2 in <a href="https://link.springer.com/article/10.1186/s12984-023-01187-8" target="_blank" rel="noreferrer">Demchenko et al. (2023)</a>, using data from <a href="https://link.springer.com/article/10.1186/s12938-019-0730-6" target="_blank" rel="noreferrer">Kapadia et al. (2019)</a>. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</p>
-            </figcaption>
-          </figure>
-        </div>
+          <figcaption class="visual-caption">
+            <strong data-i18n="evidence.visualTitle">An evidence chain—not an efficacy package</strong>
+            <span data-i18n="evidence.visualNote">Independent literature · Not WinVerse product results</span>
+          </figcaption>
+        </figure>
       </section>
-
-      <section class="content-section content-section-paper" id="controlled-pathway" aria-labelledby="protocol-title">
-        <div class="container protocol-evidence-grid">
-          <figure class="paper-figure paper-figure-prototype">
-            <a href="assets/evidence-mask-prototype-2025.jpg" target="_blank" aria-label="Open the research mask prototype figure at full size">
-              <img src="assets/evidence-mask-prototype-2025.jpg" alt="Published photographs of a participant-specific facial mould and flexible silicone research mask" />
-            </a>
-            <figcaption>
-              <span>Published prototype · not a commercial device</span>
-              <p>Participant-specific mould and flexible silicone research mask. Reproduced without substantive alteration from Fig. 4 in <a href="https://link.springer.com/article/10.1186/s40814-025-01642-4" target="_blank" rel="noreferrer">Gholamali Nezhad et al. (2025)</a>. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</p>
-            </figcaption>
-          </figure>
-          <div class="protocol-copy">
-            <p class="section-label">2025 controlled pathway</p>
-            <h2 id="protocol-title">The protocol is designed to answer the right next questions.</h2>
-            <p>The published study plan directly tackles the open-label pilot’s main weakness by comparing active stimulation with a sensory sham under double-blind conditions.</p>
-            <dl class="protocol-facts">
-              <div><dt>Sample</dt><dd>20 participants, allocated 1:1</dd></div>
-              <div><dt>Exposure</dt><dd>20 take-home sessions across four weeks</dd></div>
-              <div><dt>Primary focus</dt><dd>Feasibility, tolerability and safety</dd></div>
-              <div><dt>Clinical outcomes</dt><dd>Secondary and preliminary</dd></div>
-              <div><dt>Registration</dt><dd><a href="https://clinicaltrials.gov/study/NCT06261177" target="_blank" rel="noreferrer">NCT06261177 <span aria-hidden="true">↗</span></a></dd></div>
-            </dl>
-            <p class="protocol-caution">Even a well-designed pilot is not a definitive efficacy trial. It is intended to determine whether a larger test is justified and practicable.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" aria-labelledby="gaps-title">
-        <div class="container">
-          <div class="section-heading evidence-heading-wide">
-            <p class="section-label">Kill-critic questions</p>
-            <h2 id="gaps-title">What must be answered before a treatment claim is credible.</h2>
-          </div>
-          <div class="gap-grid">
-            <article><span>01</span><h3>Does it outperform a credible sham?</h3><p>The core causal question remains unanswered in the published outcomes cited here.</p></article>
-            <article><span>02</span><h3>Is the effect durable?</h3><p>The 2019 pilot did not establish persistence of benefit or relapse after treatment stopped.</p></article>
-            <article><span>03</span><h3>Who benefits—and who does not?</h3><p>Larger samples are needed to assess response variation, generalisability and meaningful subgroup effects.</p></article>
-            <article><span>04</span><h3>Is blinding believable?</h3><p>Perceived sensation and visible muscle movement can reveal allocation; blinding integrity must be measured, not assumed.</p></article>
-            <article><span>05</span><h3>What is the dose–response relationship?</h3><p>Session number, schedule and personalisation need prospective optimisation rather than post-hoc preference.</p></article>
-            <article><span>06</span><h3>Can independent sites reproduce it?</h3><p>Replication by teams outside the originating group is essential before broad clinical conclusions.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section evidence-sources-section" aria-labelledby="sources-title">
-        <div class="container sources-layout">
-          <div>
-            <p class="section-label">Source ledger</p>
-            <h2 id="sources-title">Trace every material statement to the record.</h2>
-            <p class="sources-intro">Primary papers are prioritised. The 2023 narrative review is used for synthesis and its licensed outcome figure—not as a substitute for controlled data.</p>
-          </div>
-          <ol class="source-list">
-            <li><span>2014</span><div><strong>Zariffa, Hitzig &amp; Popovic</strong><p>Neuromodulation of Emotion Using Functional Electrical Stimulation Applied to Facial Muscles.</p><a href="https://www.neuromodulationjournal.org/article/S1094-7159(14)60038-6/abstract" target="_blank" rel="noreferrer">Journal abstract</a><a href="https://pubmed.ncbi.nlm.nih.gov/23551502/" target="_blank" rel="noreferrer">PubMed</a></div></li>
-            <li><span>2019</span><div><strong>Kapadia et al.</strong><p>Functional electrical stimulation of the facial muscles to improve symptoms in individuals with major depressive disorder: pilot feasibility study.</p><a href="https://link.springer.com/article/10.1186/s12938-019-0730-6" target="_blank" rel="noreferrer">Open-access article</a></div></li>
-            <li><span>2020</span><div><strong>Ginatempo et al.</strong><p>Happy faces selectively increase the excitability of cortical neurons innervating frowning muscles of the mouth.</p><a href="https://link.springer.com/article/10.1007/s00221-020-05777-z" target="_blank" rel="noreferrer">Article</a></div></li>
-            <li><span>2023</span><div><strong>Demchenko et al.</strong><p>Manipulating facial musculature with functional electrical stimulation as an intervention for major depressive disorder: a focused search of literature for a proposal.</p><a href="https://link.springer.com/article/10.1186/s12984-023-01187-8" target="_blank" rel="noreferrer">Open-access review</a></div></li>
-            <li><span>2025</span><div><strong>Efthimiou et al.</strong><p>Smiling and frowning induced by facial neuromuscular electrical stimulation modulate felt emotion and physiology.</p><a href="https://pubmed.ncbi.nlm.nih.gov/39298241/" target="_blank" rel="noreferrer">PubMed</a></div></li>
-            <li><span>2025</span><div><strong>Baker et al.</strong><p>Electrical stimulation of smiling muscles reduces visual processing load and enhances happiness perception in neutral faces.</p><a href="https://www.nature.com/articles/s44271-025-00281-y" target="_blank" rel="noreferrer">Open-access article</a></div></li>
-            <li><span>2025</span><div><strong>Gholamali Nezhad et al.</strong><p>“Take-home” functional electrical stimulation for depression: protocol for a prototype development and proof of concept randomised controlled trial.</p><a href="https://link.springer.com/article/10.1186/s40814-025-01642-4" target="_blank" rel="noreferrer">Open-access protocol</a><a href="https://clinicaltrials.gov/study/NCT06261177" target="_blank" rel="noreferrer">Live trial registry</a></div></li>
-            <li id="research-origin"><span>Origin</span><div><strong>UHN / KITE Research Institute</strong><p>Public account of the research programme’s institutional origin. Citation of origin does not imply endorsement of WinVerse™.</p><a href="https://www.uhn.ca/corporate/News/Pages/healing_power_of_smile.aspx" target="_blank" rel="noreferrer">UHN project story</a></div></li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="content-section evidence-boundary-section" aria-labelledby="boundary-title">
-        <div class="container boundary-panel">
-          <p class="section-label">Interpretation rule</p>
-          <h2 id="boundary-title">A study can justify the next study without justifying a product claim.</h2>
-          <p>SerotoniX™ remains an investigational research concept. The cited work does not establish regulatory approval, clinical safety, efficacy, commercial readiness or institutional endorsement.</p>
-        </div>
-      </section>
-
-      <nav class="next-page" aria-label="Continue to next page">
-        <a class="container" href="platform.html"><span>Next · Platform</span><strong>See how the research system is being productised.</strong><span aria-hidden="true">→</span></a>
-      </nav>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-top"><a class="footer-brand" href="index.html">WinVerse™</a><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="platform.html">Platform</a><a href="serotonix.html">SerotoniX™</a><a href="evidence.html">Evidence</a><a href="company.html">Company</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a></nav></div>
-      <div class="container footer-bottom"><p>© <span data-year></span> WinVerse™. All rights reserved.</p><p>Investigational research technology. Not approved for clinical treatment. No affiliation or endorsement by UHN is implied.</p></div>
-    </footer>
+    <dialog id="evidence-dossier" aria-labelledby="evidence-dialog-title">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <h2 id="evidence-dialog-title" data-i18n="evidence.dialogTitle">Evidence dossier</h2>
+          <button class="dialog-close" type="button" data-dialog-close aria-label="Close">×</button>
+        </header>
+        <div class="dialog-content">
+          <p class="dialog-intro" data-i18n="evidence.dialogIntro">A compact critical appraisal of the facial-FES research pathway.</p>
+
+          <div class="study-grid">
+            <article class="study-card">
+              <h3 data-i18n="evidence.study1Title">2014 · Neuromodulation of emotion</h3>
+              <p data-i18n="evidence.study1Text">Facial FES changed some emotional responses, but the primary endpoints were not significant. This is mechanistic precedent, not clinical proof.</p>
+              <a href="https://www.neuromodulationjournal.org/article/S1094-7159(14)60038-6/abstract" target="_blank" rel="noreferrer">Zariffa et al. ↗</a>
+            </article>
+            <article class="study-card">
+              <h3 data-i18n="evidence.study2Title">2019 · Pilot feasibility study</h3>
+              <p data-i18n="evidence.study2Text">Ten participants showed symptom-score improvements after ten sessions. The study was small, uncontrolled and did not establish durability or causation.</p>
+              <a href="https://link.springer.com/article/10.1186/s12938-019-0730-6" target="_blank" rel="noreferrer">Kapadia et al. ↗</a>
+            </article>
+            <article class="study-card">
+              <h3 data-i18n="evidence.study3Title">2025 · Sham-controlled protocol</h3>
+              <p data-i18n="evidence.study3Text">A registered randomised feasibility study is designed to test the method more rigorously. A protocol is evidence of intent—not an outcome.</p>
+              <a href="https://link.springer.com/article/10.1186/s40814-025-01642-4" target="_blank" rel="noreferrer">Gholamali Nezhad et al. ↗</a>
+            </article>
+          </div>
+
+          <article class="boundary-card">
+            <h3 data-i18n="evidence.boundaryTitle">What remains unproven</h3>
+            <p data-i18n="evidence.boundaryText">Safety and efficacy, dose-response, durability, sham separation, participant selection and repeatability at product scale.</p>
+          </article>
+
+          <div class="figure-grid">
+            <figure class="evidence-figure">
+              <img src="assets/evidence-pilot-outcomes-2019.jpg" alt="Published HAM-D and IDS distributions before and after the pilot sessions">
+              <figcaption>
+                <strong data-i18n="evidence.figure1Title">Published pilot outcomes</strong>
+                <p data-i18n="evidence.figure1Text">Outcome distributions reported in the 2019 pilot and reproduced in the 2023 review. Third-party research; CC BY 4.0.</p>
+              </figcaption>
+            </figure>
+            <figure class="evidence-figure">
+              <img src="assets/evidence-mask-prototype-2025.jpg" alt="Participant-specific mould and flexible silicone research mask published in the 2025 protocol">
+              <figcaption>
+                <strong data-i18n="evidence.figure2Title">Research-mask prototype</strong>
+                <p data-i18n="evidence.figure2Text">Participant-specific mould and flexible silicone research mask from the 2025 protocol. Third-party research; CC BY 4.0.</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="source-strip">
+            <h3 data-i18n="evidence.sourcesTitle">Primary sources</h3>
+            <div class="source-links">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/23551502/" target="_blank" rel="noreferrer">2014 study</a>
+              <a href="https://link.springer.com/article/10.1186/s12938-019-0730-6" target="_blank" rel="noreferrer">2019 pilot</a>
+              <a href="https://link.springer.com/article/10.1186/s12984-023-01187-8" target="_blank" rel="noreferrer">2023 review</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/39298241/" target="_blank" rel="noreferrer">2025 mechanism</a>
+              <a href="https://www.nature.com/articles/s44271-025-00281-y" target="_blank" rel="noreferrer">2025 perception study</a>
+              <a href="https://link.springer.com/article/10.1186/s40814-025-01642-4" target="_blank" rel="noreferrer">2025 protocol</a>
+              <a href="https://clinicaltrials.gov/study/NCT06261177" target="_blank" rel="noreferrer">NCT06261177</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <div data-site-footer></div>
   </body>
 </html>

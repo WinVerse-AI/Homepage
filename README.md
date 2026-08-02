@@ -1,6 +1,8 @@
 # WinVerse™ Website
 
-Responsive static website for WinVerse™ and the investigational SerotoniX™ facial neuromodulation research platform.
+Responsive, multilingual static website for WinVerse™, the company, and SerotoniX™, its first and flagship investigational product programme.
+
+The interface supports English, Chinese, Japanese, French, German and Spanish. Language preference is retained locally in the visitor's browser.
 
 ## Site structure
 
@@ -12,7 +14,7 @@ Responsive static website for WinVerse™ and the investigational SerotoniX™ f
 - `about.html` — purpose, connected presence and leadership
 - `contact.html` — structured contact form addressed to `winverse.ai@gmail.com`
 
-The primary navigation opens each subject as a separate page rather than scrolling through one long page. SerotoniX™ appears within the Platform navigation group.
+The primary navigation opens each subject as a separate page rather than scrolling through one long page. SerotoniX™ appears within the Platform navigation group. Desktop layouts use a compact executive-summary format designed to fit the core page narrative within one viewport; mobile pages reflow naturally for readability.
 
 The contact form uses a `mailto:` hand-off so visitors review and send their message through their own email application. This avoids routing submitted data through an unapproved third-party form service on the static GitHub Pages site.
 
