@@ -1,0 +1,169 @@
+/* SerotoniX™ product concept gallery */
+.concept-gallery-section {
+  padding: clamp(56px, 8vw, 112px) 0;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.concept-gallery-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.concept-gallery-heading h2 {
+  margin: 0;
+  max-width: 760px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+}
+
+.concept-gallery-intro {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.96rem, 1.4vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.concept-boundary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  padding: 18px 20px;
+  border: 1px solid rgba(169, 108, 26, 0.34);
+  border-left: 4px solid var(--amber);
+  background: #faf7f0;
+}
+
+.concept-boundary strong {
+  color: var(--amber);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.concept-boundary p {
+  margin: 0;
+  color: #4f5552;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.concept-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 28px);
+}
+
+.concept-card {
+  grid-column: span 6;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.concept-card.is-wide {
+  grid-column: span 12;
+}
+
+.concept-card-media {
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.concept-card img {
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+  background: #fff;
+  transition: transform 220ms ease;
+}
+
+.concept-card a:hover img,
+.concept-card a:focus-visible img {
+  transform: scale(1.012);
+}
+
+.concept-card figcaption {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 16px;
+  padding: clamp(18px, 2.4vw, 28px);
+}
+
+.concept-card-index {
+  color: var(--emerald);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.concept-card-copy h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.concept-card-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.concept-gallery-note {
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .concept-gallery-heading {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .concept-card,
+  .concept-card.is-wide {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 620px) {
+  .concept-gallery-section {
+    padding: 46px 0 56px;
+  }
+
+  .concept-boundary {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .concept-boundary strong {
+    white-space: normal;
+  }
+
+  .concept-card figcaption {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+}
