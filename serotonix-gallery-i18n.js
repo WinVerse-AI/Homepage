@@ -19,6 +19,8 @@
       "gallery.item5Text": "A working specification sheet used to frame engineering questions. Every value, feature and regulatory reference remains provisional and subject to verification.",
       "gallery.item6Title": "Colour and finish exploration",
       "gallery.item6Text": "Three visual directions—white, graphite and sage—used to explore how the product might move from laboratory language toward a more approachable consumer-wellbeing identity.",
+      "gallery.item7Title": "Proposed dimensional envelope",
+      "gallery.item7Text": "A preliminary dimensional study indicating an approximate 98 × 68 mm footprint and 18.5 mm profile. All dimensions remain subject to ergonomic and engineering validation.",
       "gallery.note": "Select any image to view the full-resolution concept artwork. Final architecture, safety controls, materials, performance, claims and classification will be determined through engineering, human-factors, safety and jurisdiction-specific review."
     },
     zh: {
@@ -39,6 +41,8 @@
       "gallery.item5Text": "用于界定工程问题的工作规格表。所有数值、功能及监管引用均为暂定内容，有待验证。",
       "gallery.item6Title": "颜色与表面处理探索",
       "gallery.item6Text": "白色、石墨灰与鼠尾草绿三种方向，用于探索产品如何从实验室语言转向更亲和的消费级身心健康形象。",
+      "gallery.item7Title": "拟议尺寸范围",
+      "gallery.item7Text": "初步尺寸研究显示约 98 × 68 毫米的平面尺寸及 18.5 毫米的厚度。所有尺寸仍须经过人体工学与工程验证。",
       "gallery.note": "点击任一图片可查看完整概念图。最终架构、安全控制、材料、性能、声明及产品分类将通过工程、人因、安全及各司法辖区审查确定。"
     },
     ja: {
@@ -59,6 +63,8 @@
       "gallery.item5Text": "設計課題を整理するための作業用仕様です。数値、機能、規制記載はすべて暫定で、検証が必要です。",
       "gallery.item6Title": "カラー・仕上げ検討",
       "gallery.item6Text": "ホワイト、グラファイト、セージの3案で、研究機器から親しみやすいウェルビーイング製品への表現を検討します。",
+      "gallery.item7Title": "提案寸法レンジ",
+      "gallery.item7Text": "約98 × 68 mmの外形と18.5 mmの厚みを示す暫定寸法検討です。すべての寸法は人間工学・設計検証により確定します。",
       "gallery.note": "画像を選択するとフル解像度で確認できます。最終設計、安全機能、材料、性能、表示、分類は今後の設計・人間工学・安全・地域別審査で決定します。"
     }
   };
