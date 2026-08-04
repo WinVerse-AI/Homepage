@@ -1,0 +1,196 @@
+{
+  "assets": [
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        2200,
+        1524
+      ],
+      "expected_dimensions": [
+        2200,
+        1524
+      ],
+      "live_bytes": 172210,
+      "live_sha256": "9f9f55b4c2f515df5fae015ecfca9b71c8f5dcd1f0ff1a30d779e47ddcb0c43b",
+      "local_bytes": 172210,
+      "local_sha256": "9f9f55b4c2f515df5fae015ecfca9b71c8f5dcd1f0ff1a30d779e47ddcb0c43b",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-mask-hero-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-mask-hero-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "expected_dimensions": [
+        1536,
+        1024
+      ],
+      "live_bytes": 7500,
+      "live_sha256": "aca0ab79d330d0020cc623576c6d7ee37a8babd17f6f2539f67d9e2fef17b407",
+      "local_bytes": 7500,
+      "local_sha256": "aca0ab79d330d0020cc623576c6d7ee37a8babd17f6f2539f67d9e2fef17b407",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-layered-architecture-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-layered-architecture-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "expected_dimensions": [
+        1448,
+        1086
+      ],
+      "live_bytes": 10735,
+      "live_sha256": "03c54dc021c389bca16a85895607b852d1a6fa961a7a8018e6fab2305dee098a",
+      "local_bytes": 10735,
+      "local_sha256": "03c54dc021c389bca16a85895607b852d1a6fa961a7a8018e6fab2305dee098a",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-product-cad-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-product-cad-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "expected_dimensions": [
+        1448,
+        1086
+      ],
+      "live_bytes": 15687,
+      "live_sha256": "0d96cc4f9d0309867ea3a09830798a8be13fa7bcd61ef8cff522e4696962cf60",
+      "local_bytes": 15687,
+      "local_sha256": "0d96cc4f9d0309867ea3a09830798a8be13fa7bcd61ef8cff522e4696962cf60",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-product-dimensions-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-product-dimensions-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        2200,
+        2136
+      ],
+      "expected_dimensions": [
+        2200,
+        2136
+      ],
+      "live_bytes": 185010,
+      "live_sha256": "ae2d2af90d9c0bf8329a42c6058fe9ecc063ba6aa1c835a9f15e2587db0f23da",
+      "local_bytes": 185010,
+      "local_sha256": "ae2d2af90d9c0bf8329a42c6058fe9ecc063ba6aa1c835a9f15e2587db0f23da",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-controller-pcba-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-controller-pcba-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "expected_dimensions": [
+        1448,
+        1086
+      ],
+      "live_bytes": 1795,
+      "live_sha256": "1d74ec7749c1e28132d8d628c6b38cb9b41469ed591e7f2bff6fd9d312792b2d",
+      "local_bytes": 1795,
+      "local_sha256": "1d74ec7749c1e28132d8d628c6b38cb9b41469ed591e7f2bff6fd9d312792b2d",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-system-architecture-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-system-architecture-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "expected_dimensions": [
+        1448,
+        1086
+      ],
+      "live_bytes": 1910,
+      "live_sha256": "cf141bd79cb60327f95bcc96dee405b500e8150a2acc081b68c807fda2844f4b",
+      "local_bytes": 1910,
+      "local_sha256": "cf141bd79cb60327f95bcc96dee405b500e8150a2acc081b68c807fda2844f4b",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-system-control-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-system-control-2026.webp"
+    },
+    {
+      "attempt": 1,
+      "content_type": "image/webp",
+      "dimensions": [
+        1511,
+        2200
+      ],
+      "expected_dimensions": [
+        1511,
+        2200
+      ],
+      "live_bytes": 135606,
+      "live_sha256": "8cd67c76928968a17fb401fc18fb7f95c02fc117b6d493965662be313bd64347",
+      "local_bytes": 135606,
+      "local_sha256": "8cd67c76928968a17fb401fc18fb7f95c02fc117b6d493965662be313bd64347",
+      "matches_commit": true,
+      "relative_path": "assets/serotonix-colour-finish-2026.webp",
+      "retry_errors": [],
+      "status": 200,
+      "url": "https://winverse-ai.github.io/Homepage/assets/serotonix-colour-finish-2026.webp"
+    }
+  ],
+  "base_url": "https://winverse-ai.github.io/Homepage/",
+  "commit_sha": "ac006cb3bf030407b722ac17a1c990b1d4a8fe3b",
+  "failures": [],
+  "generated_at_utc": "2026-08-04T11:31:48Z",
+  "page": {
+    "attempt": 1,
+    "bytes": 16688,
+    "content_type": "text/html; charset=utf-8",
+    "image_references": [
+      "assets/serotonix-colour-finish-2026.webp",
+      "assets/serotonix-controller-pcba-2026.webp",
+      "assets/serotonix-layered-architecture-2026.webp",
+      "assets/serotonix-mask-hero-2026.webp",
+      "assets/serotonix-product-cad-2026.webp",
+      "assets/serotonix-product-dimensions-2026.webp",
+      "assets/serotonix-system-architecture-2026.webp",
+      "assets/serotonix-system-control-2026.webp"
+    ],
+    "retry_errors": [],
+    "sha256": "5d6caa03cb48c5e9e061cda7f769e79fab26546289993110749f3bae6474917a",
+    "status": 200
+  },
+  "page_url": "https://winverse-ai.github.io/Homepage/serotonix.html",
+  "passed": true
+}
