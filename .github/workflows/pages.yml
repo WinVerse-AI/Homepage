@@ -1,5 +1,6 @@
 name: Deploy GitHub Pages
 
+# Deployment and evidence checks intentionally run in one closed verification loop.
 on:
   push:
     branches: ["main"]
