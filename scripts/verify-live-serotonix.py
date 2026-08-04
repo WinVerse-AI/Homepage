@@ -9,7 +9,6 @@ import struct
 import time
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, urlopen
 
@@ -66,21 +65,6 @@ def fetch(url: str, timeout: int = 30) -> tuple[int, dict[str, str], bytes]:
         return response.status, headers, response.read()
 
 
-def fetch_with_retry(url: str, attempts: int, delay: int) -> tuple[int, dict[str, str], bytes, list[str]]:
-    errors: list[str] = []
-    for attempt in range(1, attempts + 1):
-        try:
-            status, headers, body = fetch(url)
-            if status == 200:
-                return status, headers, body, errors
-            errors.append(f"attempt {attempt}: HTTP {status}")
-        except (HTTPError, URLError, TimeoutError) as exc:
-            errors.append(f"attempt {attempt}: {exc}")
-        if attempt < attempts:
-            time.sleep(delay)
-    raise RuntimeError("; ".join(errors))
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", required=True)
@@ -104,25 +88,35 @@ def main() -> int:
     }
     failures: list[str] = []
 
-    try:
-        status, headers, html_bytes, retry_errors = fetch_with_retry(page_url, args.attempts, args.delay)
-        html = html_bytes.decode("utf-8")
-        content_type = headers.get("content-type", "")
-        report["page"] = {
-            "status": status,
-            "content_type": content_type,
-            "bytes": len(html_bytes),
-            "sha256": hashlib.sha256(html_bytes).hexdigest(),
-            "retry_errors": retry_errors,
-        }
-        if "text/html" not in content_type.lower():
-            failures.append(f"page content type is {content_type!r}, expected text/html")
-        page_parser = ImageParser()
-        page_parser.feed(html)
-        if set(page_parser.sources) != set(ASSETS):
-            failures.append(f"live image reference set mismatch: {sorted(set(page_parser.sources))}")
-    except Exception as exc:
-        failures.append(f"page request failed: {exc}")
+    page_attempts: list[str] = []
+    page_ok = False
+    for attempt in range(1, args.attempts + 1):
+        try:
+            status, headers, html_bytes = fetch(page_url)
+            html = html_bytes.decode("utf-8")
+            content_type = headers.get("content-type", "")
+            page_parser = ImageParser()
+            page_parser.feed(html)
+            sources = set(page_parser.sources)
+            page_ok = status == 200 and "text/html" in content_type.lower() and sources == set(ASSETS)
+            report["page"] = {
+                "status": status,
+                "content_type": content_type,
+                "bytes": len(html_bytes),
+                "sha256": hashlib.sha256(html_bytes).hexdigest(),
+                "image_references": sorted(sources),
+                "attempt": attempt,
+                "retry_errors": page_attempts,
+            }
+            if page_ok:
+                break
+            page_attempts.append(f"attempt {attempt}: stale or unexpected page content")
+        except Exception as exc:
+            page_attempts.append(f"attempt {attempt}: {exc}")
+        if attempt < args.attempts:
+            time.sleep(args.delay)
+    if not page_ok:
+        failures.append(f"page did not converge to expected deployment: {'; '.join(page_attempts)}")
 
     for relative, expected_dimensions in ASSETS.items():
         local_path = root / relative
@@ -136,29 +130,40 @@ def main() -> int:
             "local_bytes": len(local_bytes),
             "local_sha256": local_sha,
         }
-        try:
-            status, headers, body, retry_errors = fetch_with_retry(asset_url, args.attempts, args.delay)
-            content_type = headers.get("content-type", "")
-            dimensions = webp_dimensions(body)
-            live_sha = hashlib.sha256(body).hexdigest()
-            item.update({
-                "status": status,
-                "content_type": content_type,
-                "live_bytes": len(body),
-                "live_sha256": live_sha,
-                "dimensions": list(dimensions),
-                "retry_errors": retry_errors,
-                "matches_commit": live_sha == local_sha,
-            })
-            if "image/webp" not in content_type.lower():
-                failures.append(f"{relative}: content type {content_type!r}")
-            if dimensions != expected_dimensions:
-                failures.append(f"{relative}: dimensions {dimensions}, expected {expected_dimensions}")
-            if live_sha != local_sha:
-                failures.append(f"{relative}: deployed bytes do not match commit")
-        except Exception as exc:
-            item["error"] = str(exc)
-            failures.append(f"{relative}: {exc}")
+        asset_attempts: list[str] = []
+        asset_ok = False
+        for attempt in range(1, args.attempts + 1):
+            try:
+                status, headers, body = fetch(asset_url)
+                content_type = headers.get("content-type", "")
+                dimensions = webp_dimensions(body)
+                live_sha = hashlib.sha256(body).hexdigest()
+                asset_ok = (
+                    status == 200
+                    and "image/webp" in content_type.lower()
+                    and dimensions == expected_dimensions
+                    and live_sha == local_sha
+                )
+                item.update({
+                    "status": status,
+                    "content_type": content_type,
+                    "live_bytes": len(body),
+                    "live_sha256": live_sha,
+                    "dimensions": list(dimensions),
+                    "attempt": attempt,
+                    "retry_errors": asset_attempts,
+                    "matches_commit": live_sha == local_sha,
+                })
+                if asset_ok:
+                    break
+                asset_attempts.append(f"attempt {attempt}: stale or unexpected asset bytes")
+            except Exception as exc:
+                asset_attempts.append(f"attempt {attempt}: {exc}")
+            if attempt < args.attempts:
+                time.sleep(args.delay)
+        if not asset_ok:
+            item["error"] = "; ".join(asset_attempts)
+            failures.append(f"{relative}: did not converge to committed bytes")
         cast_assets = report["assets"]
         assert isinstance(cast_assets, list)
         cast_assets.append(item)
