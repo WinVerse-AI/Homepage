@@ -13,14 +13,14 @@ from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, urlopen
 
 ASSETS = {
-    "assets/serotonix-mask-hero-2026.webp": (1200, 900),
+    "assets/serotonix-mask-hero-2026.webp": (2200, 1524),
     "assets/serotonix-layered-architecture-2026.webp": (1536, 1024),
     "assets/serotonix-product-cad-2026.webp": (1448, 1086),
     "assets/serotonix-product-dimensions-2026.webp": (1448, 1086),
-    "assets/serotonix-controller-pcba-2026.webp": (1536, 1024),
+    "assets/serotonix-controller-pcba-2026.webp": (2200, 2136),
     "assets/serotonix-system-architecture-2026.webp": (1448, 1086),
     "assets/serotonix-system-control-2026.webp": (1448, 1086),
-    "assets/serotonix-colour-finish-2026.webp": (1024, 1536),
+    "assets/serotonix-colour-finish-2026.webp": (1511, 2200),
 }
 
 
