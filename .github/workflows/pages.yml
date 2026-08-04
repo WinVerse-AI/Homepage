@@ -1,6 +1,7 @@
 name: Deploy GitHub Pages
 
 # Deployment and evidence checks intentionally run in one closed verification loop.
+# This revision is merged through a pull request so GitHub emits a deployable push event.
 on:
   push:
     branches: ["main"]
