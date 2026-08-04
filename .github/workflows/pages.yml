@@ -29,6 +29,24 @@ jobs:
       - name: Verify committed SerotoniX assets
         run: python3 scripts/verify-serotonix-assets.py --root .
 
+      - name: Initialise deployment evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin deployment-verification
+          git worktree add /tmp/serotonix-evidence-branch deployment-verification
+          cat > /tmp/serotonix-evidence-branch/status.json <<EOF
+          {
+            "commit_sha": "${GITHUB_SHA}",
+            "stage": "local-assets-verified",
+            "status": "running",
+            "updated_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+          git -C /tmp/serotonix-evidence-branch add status.json
+          git -C /tmp/serotonix-evidence-branch commit -m "Start SerotoniX verification ${GITHUB_SHA}" || true
+          git -C /tmp/serotonix-evidence-branch push origin deployment-verification
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
@@ -67,12 +85,22 @@ jobs:
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
-          mkdir -p /tmp/serotonix-evidence
-          cp /tmp/serotonix-live-verification.json /tmp/serotonix-evidence/
-          cp /tmp/serotonix-browser-verification.json /tmp/serotonix-evidence/
-          cp /tmp/serotonix-desktop.png /tmp/serotonix-evidence/
-          cp /tmp/serotonix-mobile.png /tmp/serotonix-evidence/
-          cat > /tmp/serotonix-evidence/README.md <<EOF
+          EVIDENCE=/tmp/serotonix-evidence-branch
+          git -C "$EVIDENCE" rm -rf .
+          cp /tmp/serotonix-live-verification.json "$EVIDENCE"/
+          cp /tmp/serotonix-browser-verification.json "$EVIDENCE"/
+          cp /tmp/serotonix-desktop.png "$EVIDENCE"/
+          cp /tmp/serotonix-mobile.png "$EVIDENCE"/
+          cat > "$EVIDENCE/status.json" <<EOF
+          {
+            "commit_sha": "${GITHUB_SHA}",
+            "page_url": "${PAGE_URL%/}/serotonix.html",
+            "stage": "live-browser-verification-complete",
+            "status": "passed",
+            "updated_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+          cat > "$EVIDENCE/README.md" <<EOF
           # SerotoniX deployment verification
 
           - Commit: \`${GITHUB_SHA}\`
@@ -85,11 +113,6 @@ jobs:
           and horizontal-overflow checks. The PNG files are full-page desktop and
           mobile captures of the deployed page.
           EOF
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan deployment-verification
-          git rm -rf .
-          cp -a /tmp/serotonix-evidence/. .
-          git add .
-          git commit -m "Verify SerotoniX deployment ${GITHUB_SHA}"
-          git push --force origin HEAD:deployment-verification
+          git -C "$EVIDENCE" add .
+          git -C "$EVIDENCE" commit -m "Verify SerotoniX deployment ${GITHUB_SHA}"
+          git -C "$EVIDENCE" push origin deployment-verification
