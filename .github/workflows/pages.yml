@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -20,12 +20,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Verify SerotoniX assets
+      - name: Verify committed SerotoniX assets
         run: python3 scripts/verify-serotonix-assets.py --root .
 
       - name: Configure GitHub Pages
@@ -39,3 +39,56 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify live SerotoniX page and asset bytes
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python3 scripts/verify-live-serotonix.py \
+            --base-url "$PAGE_URL" \
+            --root . \
+            --output /tmp/serotonix-live-verification.json
+
+      - name: Install browser verification runtime
+        run: npm install --prefix /tmp/serotonix-playwright playwright-core@1.55.0
+
+      - name: Capture and verify live desktop and mobile pages
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node scripts/capture-serotonix.js \
+            "${PAGE_URL%/}/serotonix.html" \
+            /tmp/serotonix-desktop.png \
+            /tmp/serotonix-mobile.png \
+            /tmp/serotonix-browser-verification.json
+
+      - name: Publish deployment evidence
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          mkdir -p /tmp/serotonix-evidence
+          cp /tmp/serotonix-live-verification.json /tmp/serotonix-evidence/
+          cp /tmp/serotonix-browser-verification.json /tmp/serotonix-evidence/
+          cp /tmp/serotonix-desktop.png /tmp/serotonix-evidence/
+          cp /tmp/serotonix-mobile.png /tmp/serotonix-evidence/
+          cat > /tmp/serotonix-evidence/README.md <<EOF
+          # SerotoniX deployment verification
+
+          - Commit: \`${GITHUB_SHA}\`
+          - Pages base URL: ${PAGE_URL}
+          - Page: ${PAGE_URL%/}/serotonix.html
+          - Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          The JSON reports contain direct-asset HTTP status, MIME type, byte hash,
+          natural dimensions, browser console/network results, rendered dimensions
+          and horizontal-overflow checks. The PNG files are full-page desktop and
+          mobile captures of the deployed page.
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan deployment-verification
+          git rm -rf .
+          cp -a /tmp/serotonix-evidence/. .
+          git add .
+          git commit -m "Verify SerotoniX deployment ${GITHUB_SHA}"
+          git push --force origin HEAD:deployment-verification
