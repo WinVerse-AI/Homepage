@@ -25,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Verify SerotoniX assets
+        run: python3 scripts/verify-serotonix-assets.py --root .
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
