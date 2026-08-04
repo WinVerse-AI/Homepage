@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "conversion": {
+    "format": "WebP",
+    "encoder": "Pillow",
+    "quality": 65,
+    "method": 6,
+    "resize": false,
+    "notes": "Native pixel dimensions preserved. Technical-board crops were compared at 100% and remained legible before staging."
+  },
+  "assets": [
+    {
+      "section": "Colour and finish exploration",
+      "source_name": "Color&Finish 2(5).png",
+      "source_sha256": "e01755a60eb6e7a0372315e112409b9cc96d436b9d6da0925960959c8fa4f6ca",
+      "production_path": "assets/serotonix-colour-finish-2026.webp",
+      "production_sha256": "50d564812b5bbf51d26986ac84afc382474617bc893565de7fd8e0863684dda7",
+      "bytes": 70618,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "section": "Illustrative layered architecture",
+      "source_name": "Illustrative Product Layered(4).png",
+      "source_sha256": "ff4243d53c38298f6238cdb64e8b62ca852e823ef698fb6fe979200a7a67d967",
+      "production_path": "assets/serotonix-layered-architecture-2026.webp",
+      "production_sha256": "5f929a2e4839c2fe2c8d06444fad47ddac79fa470ec6979583a33ffe2a9bf84f",
+      "bytes": 100956,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "section": "Controller PCBA concept",
+      "source_name": "PCBA Drawings(4).png",
+      "source_sha256": "2b5e523dd36c17f3194d2679b920286449191e1daa9778cd3f364d0fbcd56443",
+      "production_path": "assets/serotonix-controller-pcba-2026.webp",
+      "production_sha256": "bf809004cf448a7297b32b536367888be369d45c4253ee27a87e5074c592e1f8",
+      "bytes": 143662,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "section": "Product CAD views",
+      "source_name": "Product CAD Drawings(6).png",
+      "source_sha256": "3526042956d9d510cc618b8ed1899b59a39ce28574cf47575fc1a64c0e6babad",
+      "production_path": "assets/serotonix-product-cad-2026.webp",
+      "production_sha256": "c1e7384369e9dbc8d2185745b9e1961d938b01438281fefd70c8fc1fc6f6e0f7",
+      "bytes": 80266,
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "section": "Proposed dimensional envelope",
+      "source_name": "Product Dimensions 2(5).png",
+      "source_sha256": "a2b4841603c7387a6618392aca34f11ee906ed639879ea6e556e297bf71f908e",
+      "production_path": "assets/serotonix-product-dimensions-2026.webp",
+      "production_sha256": "f38c7f692644cb04b0feb6e20f433b5b4dc420c7ac9e882bdf939f4bfe0fbacc",
+      "bytes": 90636,
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "section": "Control and safety logic study",
+      "source_name": "System Control Schematic(4).png",
+      "source_sha256": "208642419937b9be56c58087c10beebff775493c977ab959a8440e460dec04c7",
+      "production_path": "assets/serotonix-system-control-2026.webp",
+      "production_sha256": "169a480563c04db44f326454b6e3eccae03e2a2bc0fb40e4ee8934329dcfd6d1",
+      "bytes": 99936,
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "section": "System architecture schematic",
+      "source_name": "System Schematics(5).png",
+      "source_sha256": "172dfb956b4cfa63678514c56071eea647ffabb8749a86b423a909c84e832991",
+      "production_path": "assets/serotonix-system-architecture-2026.webp",
+      "production_sha256": "8a918fe22fc94fcd5f6851fa35e9d03dbc48bf7a94ed78e6da9099abaa143412",
+      "bytes": 92190,
+      "width": 1448,
+      "height": 1086
+    }
+  ]
+}
