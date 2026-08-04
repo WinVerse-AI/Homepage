@@ -22,13 +22,21 @@ jobs:
   validate:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
-      - name: Checkout
+      - name: Checkout full history
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Verify committed SerotoniX assets
         run: python3 scripts/verify-serotonix-assets.py --root .
+
+      - name: Install image-history scanner
+        run: python3 -m pip install --disable-pip-version-check pillow
+
+      - name: Match supplied boards against repository history
+        run: python3 scripts/find-serotonix-assets-in-history.py
 
   deploy:
     if: github.event_name != 'pull_request'
