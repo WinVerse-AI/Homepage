@@ -238,6 +238,17 @@
   line-height: 1.6;
 }
 
+/* Keep the complete SerotoniX™ board visible in the hero instead of cropping it. */
+.serotonix-stage .visual-panel {
+  background: #fff;
+}
+
+.serotonix-stage .visual-panel > img {
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+
 @media (max-width: 900px) {
   .concept-gallery-heading,
   .concept-research-context {
