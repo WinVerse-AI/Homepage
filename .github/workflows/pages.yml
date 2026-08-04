@@ -1,9 +1,11 @@
 name: Deploy GitHub Pages
 
 # Deployment and evidence checks intentionally run in one closed verification loop.
-# This revision is merged through a pull request so GitHub emits a deployable push event.
+# Pull requests run only the repository-level asset gate; main-branch pushes deploy.
 on:
   push:
+    branches: ["main"]
+  pull_request:
     branches: ["main"]
   workflow_dispatch:
 
@@ -13,11 +15,23 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Verify committed SerotoniX assets
+        run: python3 scripts/verify-serotonix-assets.py --root .
+
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
