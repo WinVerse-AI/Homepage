@@ -1,11 +1,12 @@
 # SerotoniX deployment verification
 
-- Commit: `ac006cb3bf030407b722ac17a1c990b1d4a8fe3b`
+- Commit: `188646086300cad638d26fbfacde9b1b911b4cc5`
 - Pages base URL: https://winverse-ai.github.io/Homepage/
 - Page: https://winverse-ai.github.io/Homepage/serotonix.html
-- Generated: 2026-08-04T11:32:03Z
+- Run: https://github.com/WinVerse-AI/Homepage/actions/runs/30973456068
+- Generated: 2026-08-05T03:52:30Z
 
-The JSON reports contain direct-asset HTTP status, MIME type, byte hash,
-natural dimensions, browser console/network results, rendered dimensions
-and horizontal-overflow checks. The PNG files are full-page desktop and
-mobile captures of the deployed page.
+The JSON reports contain exact HTML and asset byte hashes, strict RIFF
+container checks, full Pillow and browser decodes, natural and rendered
+dimensions, console and network results, language switching, mobile
+navigation and horizontal-overflow checks.
