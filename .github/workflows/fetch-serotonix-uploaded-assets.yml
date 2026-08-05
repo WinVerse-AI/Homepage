@@ -1,0 +1,156 @@
+name: Fetch exact SerotoniX uploaded boards
+
+on:
+  push:
+    branches: ["agent/serotonix-seven-source-boards"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/serotonix-seven-source-boards
+
+      - name: Install image tooling
+        run: python3 -m pip install --disable-pip-version-check pillow==12.3.0
+
+      - name: Retrieve and verify exact uploaded PNG sources
+        id: retrieve
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+          from PIL import Image
+
+          boards = [
+              {
+                  "id": "file_00000000b2ec820b8cff29580babf333",
+                  "name": "serotonix-colour-finish-options-2026",
+                  "sha256": "e01755a60eb6e7a0372315e112409b9cc96d436b9d6da0925960959c8fa4f6ca",
+                  "size": (1024, 1536),
+              },
+              {
+                  "id": "file_000000000aa481f8af842a4275497679",
+                  "name": "serotonix-illustrative-layered-architecture-2026",
+                  "sha256": "8286fed0148773d212ba19311205e9e4f402b1ab45b7a25de3a456573effbce7",
+                  "size": (1536, 1024),
+              },
+              {
+                  "id": "file_00000000bfdc81fa99e37e96fef547ca",
+                  "name": "serotonix-system-schematic-2026",
+                  "sha256": "40cfac150641db93d37a9e1848d97ca2c98091f1af4653fee077fa28f5779efe",
+                  "size": (1448, 1086),
+              },
+              {
+                  "id": "file_000000009e3481fa87f94cd5d8475f26",
+                  "name": "serotonix-system-control-schematic-2026",
+                  "sha256": "4bf136c41e09ad27dc4c4b0f99af8317a271d53116be6f9d3e952a66677871df",
+                  "size": (1448, 1086),
+              },
+              {
+                  "id": "file_00000000fe6c8206bd5e6bce10b2b71a",
+                  "name": "serotonix-product-dimensions-2026",
+                  "sha256": "a2b4841603c7387a6618392aca34f11ee906ed639879ea6e556e297bf71f908e",
+                  "size": (1448, 1086),
+              },
+              {
+                  "id": "file_00000000749c8211beda0dc9558afe86",
+                  "name": "serotonix-product-cad-drawings-2026",
+                  "sha256": "a0a27a6c07e941776805c4c35228bd8ea77c4c215f42b97b366966126b27c89a",
+                  "size": (1448, 1086),
+              },
+              {
+                  "id": "file_00000000d6c881faa233a7661cf52c9e",
+                  "name": "serotonix-controller-pcba-drawings-2026",
+                  "sha256": "86450e6cf529713fefcbf27b3951a9cf79abef667d79583b6bd4fdac847cc97b",
+                  "size": (1536, 1024),
+              },
+          ]
+
+          def candidates(file_id: str) -> list[str]:
+              hyphen_id = file_id.replace("file_", "file-", 1)
+              return [
+                  f"https://files.oaiusercontent.com/{file_id}",
+                  f"https://files.oaiusercontent.com/{hyphen_id}",
+                  f"https://chatgpt.com/backend-api/files/{file_id}/download",
+                  f"https://chatgpt.com/backend-api/files/{file_id}",
+                  f"https://chat.openai.com/backend-api/files/{file_id}/download",
+                  f"https://api.openai.com/v1/files/{file_id}/content",
+              ]
+
+          source_dir = Path(".asset-source-png")
+          asset_dir = Path("assets")
+          source_dir.mkdir(exist_ok=True)
+          asset_dir.mkdir(exist_ok=True)
+          report = {"boards": [], "passed": True}
+
+          for board in boards:
+              png = source_dir / f"{board['name']}.png"
+              item = {"id": board["id"], "attempts": [], "matched": False}
+              for url in candidates(board["id"]):
+                  result = subprocess.run(
+                      ["curl", "-L", "--silent", "--show-error", "--max-time", "30", "--output", str(png), "--write-out", "%{http_code}", url],
+                      text=True,
+                      capture_output=True,
+                  )
+                  status = result.stdout[-3:] if result.stdout else "000"
+                  data = png.read_bytes() if png.exists() else b""
+                  digest = hashlib.sha256(data).hexdigest() if data else None
+                  item["attempts"].append({"url": url, "http": status, "bytes": len(data), "sha256": digest})
+                  if status == "200" and digest == board["sha256"]:
+                      with Image.open(png) as image:
+                          image.load()
+                          if image.size != board["size"] or image.format != "PNG":
+                              raise RuntimeError(f"Unexpected PNG metadata for {board['name']}: {image.format} {image.size}")
+                          rgb = image.convert("RGB")
+                          webp = asset_dir / f"{board['name']}.webp"
+                          rgb.save(webp, "WEBP", quality=90, method=6)
+                          with Image.open(webp) as decoded:
+                              decoded.load()
+                              if decoded.size != board["size"] or decoded.format != "WEBP":
+                                  raise RuntimeError(f"WebP verification failed for {webp}")
+                      item["matched"] = True
+                      item["source_sha256"] = digest
+                      item["webp_sha256"] = hashlib.sha256(webp.read_bytes()).hexdigest()
+                      item["webp_bytes"] = webp.stat().st_size
+                      break
+              if not item["matched"]:
+                  report["passed"] = False
+              report["boards"].append(item)
+
+          Path("asset-fetch-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+          if not report["passed"]:
+              raise SystemExit("One or more exact upload objects were not publicly retrievable")
+          PY
+
+      - name: Record result and remove temporary fetcher
+        if: always()
+        run: |
+          rm -f .github/workflows/fetch-serotonix-uploaded-assets.yml
+          if [ "${{ steps.retrieve.outcome }}" = "success" ]; then
+            rm -rf .asset-source-png
+            git add assets asset-fetch-report.json .github/workflows/fetch-serotonix-uploaded-assets.yml
+            message="Materialise exact supplied SerotoniX boards"
+          else
+            rm -rf .asset-source-png
+            git add asset-fetch-report.json .github/workflows/fetch-serotonix-uploaded-assets.yml
+            message="Record failed exact asset retrieval"
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "$message"
+          git push origin HEAD:agent/serotonix-seven-source-boards
+
+      - name: Fail when exact source retrieval failed
+        if: steps.retrieve.outcome != 'success'
+        run: exit 1
