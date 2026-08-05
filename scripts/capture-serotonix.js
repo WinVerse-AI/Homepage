@@ -143,9 +143,9 @@ if (!executablePath) {
       }
     }
 
-    if (imageState.length !== 8) {
+    if (imageState.length !== 6) {
       report.failures.push(
-        `${config.name}: expected 8 SerotoniX images, found ${imageState.length}`,
+        `${config.name}: expected 6 SerotoniX images, found ${imageState.length}`,
       );
     }
     for (const image of imageState) {
