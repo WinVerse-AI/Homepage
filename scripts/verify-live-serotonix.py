@@ -16,12 +16,12 @@ from webp_integrity import inspect_webp
 
 ASSETS = {
     "assets/serotonix-mask-hero-2026.webp": (2200, 1524),
-    "assets/serotonix-layered-architecture-2026.webp": (1536, 1024),
-    "assets/serotonix-product-cad-2026.webp": (1448, 1086),
-    "assets/serotonix-product-dimensions-2026.webp": (1448, 1086),
+    "assets/serotonix-concept-exploded-hires.webp": (2083, 2200),
+    "assets/serotonix-cad-concept-hires.webp": (2200, 1524),
+    "assets/serotonix-dimensions-hires.webp": (1800, 2400),
     "assets/serotonix-controller-pcba-2026.webp": (2200, 2136),
-    "assets/serotonix-system-architecture-2026.webp": (1448, 1086),
-    "assets/serotonix-system-control-2026.webp": (1448, 1086),
+    "assets/serotonix-system-schematic-hires.webp": (1633, 2200),
+    "assets/serotonix-proposed-specifications-hires.webp": (2058, 2200),
     "assets/serotonix-colour-finish-2026.webp": (1511, 2200),
 }
 
