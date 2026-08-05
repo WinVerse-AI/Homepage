@@ -1,12 +1,124 @@
 (() => {
   const dictionaries = window.WINVERSE_I18N || (window.WINVERSE_I18N = {});
-  const english = dictionaries.en || (dictionaries.en = {});
+  const copy = {
+    en: {
+      "gallery.intro": "Seven fully decoded development boards document the wearable architecture, industrial design, dimensions, controller electronics, system logic, preliminary specifications and finish exploration. Each board is served at its committed native resolution.",
+      "gallery.item1Title": "Exploded wearable architecture",
+      "gallery.item1Text": "A layered design study linking scan-derived geometry, the flexible facial interface, electrode cassette and controller enclosure. It is an architecture proposal, not proof of fit, targeting, safety or manufacturability.",
+      "gallery.item2Title": "Product CAD views",
+      "gallery.item2Text": "Top, bottom, side, front, back and perspective views explore enclosure geometry, openings, mounting points and packaging relationships. They are concept drawings rather than controlled production CAD.",
+      "gallery.item3Title": "Proposed dimensional envelope",
+      "gallery.item3Text": "The board records an early approximately 98 × 68 mm footprint and 18.5 mm profile. These dimensions are historical design inputs and must not be treated as final mask or controller specifications.",
+      "gallery.item4Title": "Controller PCBA concept",
+      "gallery.item4Text": "The controller-board study combines layout views, a block diagram, electrical targets, connector pinouts, current-driver architecture and a proposed four-layer stack. None of those details should be read as a released or manufacturing-ready design.",
+      "gallery.item5Title": "System control schematic",
+      "gallery.item5Text": "A preliminary functional map links the electrodes, output driver, microcontroller, power management, sensing, logging and wireless connection. It identifies functions to engineer and verify; it does not establish closed-loop or fail-safe performance.",
+      "gallery.item6Title": "Preliminary design envelope",
+      "gallery.item6Text": "A working specification board records provisional materials, electrical, battery, communication and regulatory assumptions. It is a question set for engineering—not verified performance or market authorisation.",
+      "gallery.item7Title": "Colour and finish exploration",
+      "gallery.item7Text": "Arctic White, Graphite Gray and Sage Green test different visual identities. The market labels embedded in the artwork are exploratory naming, not product classes, channels or regulatory designations.",
+      "gallery.question2": "Reconcile the conflicting form factors, dimensions, electrode locations, controller size and cable strategy into one controlled mechanical architecture.",
+      "gallery.note": "Select a board to open its full-resolution artwork. The eight displayed WebPs are fully decoded during pull-request and deployment checks. Final architecture, materials, performance, claims, safety controls and classification remain subject to engineering, human-factors, evidence and jurisdiction-specific review."
+    },
+    zh: {
+      "gallery.intro": "七张已完整解码的开发图板记录了可穿戴架构、工业设计、尺寸、控制电子、系统逻辑、初步规格及表面处理探索。每张图板均以仓库中提交的原始分辨率提供。",
+      "gallery.item1Title": "可穿戴分解架构",
+      "gallery.item1Text": "分层设计研究连接扫描生成的几何、柔性面部界面、电极组件及控制器外壳。这是架构提案，并非对贴合、靶向、安全或可制造性的证明。",
+      "gallery.item2Title": "产品 CAD 视图",
+      "gallery.item2Text": "顶视、底视、侧视、前视、后视及透视图用于探索外壳几何、开孔、固定点及封装关系；这些是概念图，而非受控生产 CAD。",
+      "gallery.item3Title": "拟议尺寸范围",
+      "gallery.item3Text": "图板记录了早期约 98 × 68 毫米的平面尺寸及 18.5 毫米的厚度。这些是历史设计输入，不应视为面罩或控制器的最终规格。",
+      "gallery.item4Title": "控制器 PCBA 概念",
+      "gallery.item4Text": "控制板研究包括布局视图、框图、电气目标、连接器针脚、电流驱动架构及拟议四层叠层；不应视为已发布或可直接制造的设计。",
+      "gallery.item5Title": "系统控制示意图",
+      "gallery.item5Text": "初步功能图连接电极、输出驱动器、微控制器、电源管理、传感、记录及无线连接。它列出需工程化和验证的功能，并不能证明闭环或失效安全性能。",
+      "gallery.item6Title": "初步设计范围",
+      "gallery.item6Text": "工作规格图板记录暂定的材料、电气、电池、通信及监管假设。这是工程问题清单，而非已验证性能或上市许可。",
+      "gallery.item7Title": "颜色与表面处理探索",
+      "gallery.item7Text": "北极白、石墨灰与鼠尾草绿用于测试不同视觉身份。图中的市场标签仅为探索性命名，不是产品类别、渠道或监管指定。",
+      "gallery.question2": "将相互冲突的形态、尺寸、电极位置、控制器大小及线缆策略协调为一个受控机械架构。",
+      "gallery.note": "点击图板可打开完整分辨率图稿。所显示的八张 WebP 会在拉取请求及部署检查中进行完整解码。最终架构、材料、性能、声明、安全控制及分类仍须经过工程、人因、证据及各司法辖区审查。"
+    },
+    ja: {
+      "gallery.intro": "完全にデコード可能な7枚の開発ボードが、ウェアラブル構造、工業デザイン、寸法、制御電子回路、システムロジック、暫定仕様、仕上げ検討を記録しています。各画像はコミット済みのネイティブ解像度で配信されます。",
+      "gallery.item1Title": "ウェアラブル分解アーキテクチャ",
+      "gallery.item1Text": "スキャン由来形状、柔軟な顔面インターフェース、電極カセット、コントローラー筐体を結ぶ層構造案です。適合性、標的精度、安全性、製造性を証明するものではありません。",
+      "gallery.item2Title": "製品 CAD ビュー",
+      "gallery.item2Text": "上面、下面、側面、正面、背面、透視図で筐体形状、開口、固定点、実装関係を検討します。管理された量産 CAD ではなく概念図です。",
+      "gallery.item3Title": "提案寸法レンジ",
+      "gallery.item3Text": "約 98 × 68 mm、厚さ 18.5 mmという初期検討値を記録しています。歴史的な設計入力であり、マスクやコントローラーの最終仕様ではありません。",
+      "gallery.item4Title": "コントローラー PCBA コンセプト",
+      "gallery.item4Text": "レイアウト、ブロック図、電気目標、コネクターピン、電流駆動構成、4層スタック案を示します。公開済み又は製造準備済みの設計ではありません。",
+      "gallery.item5Title": "システム制御概略",
+      "gallery.item5Text": "電極、出力ドライバー、マイクロコントローラー、電源管理、センシング、記録、無線接続を結ぶ初期機能図です。閉ループ又はフェイルセーフ性能を示すものではありません。",
+      "gallery.item6Title": "暫定設計レンジ",
+      "gallery.item6Text": "材料、電気、電池、通信、規制に関する暫定仮定を記録した作業用仕様です。検証済み性能又は販売承認ではありません。",
+      "gallery.item7Title": "カラー・仕上げ検討",
+      "gallery.item7Text": "アークティックホワイト、グラファイトグレー、セージグリーンで異なる視覚表現を検討します。画像内の市場ラベルは探索的名称であり、製品区分や規制指定ではありません。",
+      "gallery.question2": "相互に整合しない形状、寸法、電極位置、コントローラーサイズ、配線方式を一つの管理された機械構成に統合する。",
+      "gallery.note": "画像を選択するとフル解像度で表示されます。表示する8点の WebP は、プルリクエスト及びデプロイ検証で完全デコードされます。最終設計、材料、性能、表示、安全制御、分類は今後の検証対象です。"
+    },
+    fr: {
+      "gallery.intro": "Sept planches de développement entièrement décodables documentent l’architecture portable, le design industriel, les dimensions, l’électronique de commande, la logique système, les spécifications préliminaires et les finitions. Chaque planche est servie à sa résolution native enregistrée.",
+      "gallery.item1Title": "Architecture portable éclatée",
+      "gallery.item1Text": "Une étude en couches reliant la géométrie issue du scan, l’interface faciale flexible, la cassette d’électrodes et le boîtier de commande. Elle ne prouve ni l’ajustement, ni le ciblage, ni la sécurité, ni la fabricabilité.",
+      "gallery.item2Title": "Vues CAO du produit",
+      "gallery.item2Text": "Les vues de dessus, dessous, côté, face, arrière et perspective explorent la géométrie, les ouvertures, les fixations et l’intégration. Il s’agit de dessins conceptuels, non d’une CAO de production contrôlée.",
+      "gallery.item3Title": "Enveloppe dimensionnelle proposée",
+      "gallery.item3Text": "La planche consigne une empreinte initiale d’environ 98 × 68 mm et une épaisseur de 18,5 mm. Ce sont des données historiques de conception, non des spécifications finales.",
+      "gallery.item4Title": "Concept de PCBA de commande",
+      "gallery.item4Text": "L’étude rassemble vues d’implantation, schéma-blocs, objectifs électriques, brochages, architecture de pilotage et empilage quatre couches. Elle n’est ni publiée ni prête à fabriquer.",
+      "gallery.item5Title": "Schéma de commande système",
+      "gallery.item5Text": "Une carte fonctionnelle relie électrodes, pilote de sortie, microcontrôleur, alimentation, capteurs, journalisation et liaison sans fil. Elle ne démontre pas de fonctionnement en boucle fermée ou à sécurité intégrée.",
+      "gallery.item6Title": "Enveloppe de conception préliminaire",
+      "gallery.item6Text": "Une planche de travail consigne des hypothèses provisoires de matériaux, d’électricité, de batterie, de communication et de réglementation. Ce n’est ni une performance vérifiée ni une autorisation de mise sur le marché.",
+      "gallery.item7Title": "Exploration des couleurs et finitions",
+      "gallery.item7Text": "Arctic White, Graphite Gray et Sage Green testent différentes identités visuelles. Les libellés de marché intégrés sont exploratoires et non réglementaires.",
+      "gallery.question2": "Réconcilier les formes, dimensions, positions d’électrodes, tailles de commande et stratégies de câblage contradictoires dans une architecture mécanique maîtrisée.",
+      "gallery.note": "Sélectionnez une planche pour ouvrir l’image en pleine résolution. Les huit WebP affichés sont entièrement décodés lors des contrôles de pull request et de déploiement. L’architecture, les matériaux, les performances, les allégations, la sécurité et la classification restent à valider."
+    },
+    de: {
+      "gallery.intro": "Sieben vollständig dekodierbare Entwicklungsboards dokumentieren Wearable-Architektur, Industriedesign, Abmessungen, Steuerelektronik, Systemlogik, vorläufige Spezifikationen und Oberflächenvarianten. Jedes Board wird in der gespeicherten nativen Auflösung ausgeliefert.",
+      "gallery.item1Title": "Explodierte Wearable-Architektur",
+      "gallery.item1Text": "Eine Schichtstudie verbindet scanbasierte Geometrie, flexible Gesichtsauflage, Elektrodenkassette und Controllergehäuse. Sie belegt weder Passform, Zielgenauigkeit, Sicherheit noch Herstellbarkeit.",
+      "gallery.item2Title": "Produkt-CAD-Ansichten",
+      "gallery.item2Text": "Drauf-, Unter-, Seiten-, Vorder-, Rück- und Perspektivansichten untersuchen Geometrie, Öffnungen, Befestigungen und Packaging. Es sind Konzeptzeichnungen, keine kontrollierten Produktions-CAD-Daten.",
+      "gallery.item3Title": "Vorgeschlagener Abmessungsrahmen",
+      "gallery.item3Text": "Das Board dokumentiert einen frühen Grundriss von etwa 98 × 68 mm und eine Höhe von 18,5 mm. Dies sind historische Entwurfswerte, keine finalen Spezifikationen.",
+      "gallery.item4Title": "Controller-PCBA-Konzept",
+      "gallery.item4Text": "Die Studie kombiniert Layoutansichten, Blockdiagramm, elektrische Ziele, Pinbelegung, Stromtreiberarchitektur und einen vorgeschlagenen Vierlagenaufbau. Sie ist weder freigegeben noch fertigungstauglich.",
+      "gallery.item5Title": "Systemsteuerungsschema",
+      "gallery.item5Text": "Eine vorläufige Funktionskarte verbindet Elektroden, Ausgangstreiber, Mikrocontroller, Energieverwaltung, Sensorik, Protokollierung und Funk. Sie belegt weder geschlossenen Regelkreis noch fehlersicheres Verhalten.",
+      "gallery.item6Title": "Vorläufiger Entwurfsrahmen",
+      "gallery.item6Text": "Ein Arbeitsboard hält vorläufige Annahmen zu Materialien, Elektrik, Batterie, Kommunikation und Regulierung fest. Es ist kein Leistungsnachweis und keine Marktzulassung.",
+      "gallery.item7Title": "Farb- und Oberflächenstudie",
+      "gallery.item7Text": "Arctic White, Graphite Gray und Sage Green testen unterschiedliche visuelle Identitäten. Eingebettete Marktbezeichnungen sind explorativ und keine regulatorischen Kategorien.",
+      "gallery.question2": "Widersprüchliche Formfaktoren, Abmessungen, Elektrodenpositionen, Controllergrößen und Kabelstrategien in einer kontrollierten mechanischen Architektur zusammenführen.",
+      "gallery.note": "Wählen Sie ein Board, um die volle Auflösung zu öffnen. Alle acht angezeigten WebPs werden in Pull-Request- und Deployment-Prüfungen vollständig dekodiert. Architektur, Materialien, Leistung, Aussagen, Sicherheitsfunktionen und Klassifizierung bleiben zu validieren."
+    },
+    es: {
+      "gallery.intro": "Siete láminas de desarrollo totalmente decodificables documentan la arquitectura wearable, el diseño industrial, las dimensiones, la electrónica de control, la lógica del sistema, las especificaciones preliminares y los acabados. Cada lámina se sirve a su resolución nativa confirmada.",
+      "gallery.item1Title": "Arquitectura wearable explosionada",
+      "gallery.item1Text": "Un estudio por capas conecta la geometría derivada del escaneo, la interfaz facial flexible, el cassette de electrodos y la carcasa del controlador. No demuestra ajuste, direccionamiento, seguridad ni fabricabilidad.",
+      "gallery.item2Title": "Vistas CAD del producto",
+      "gallery.item2Text": "Las vistas superior, inferior, lateral, frontal, posterior y en perspectiva exploran geometría, aberturas, anclajes y empaquetado. Son dibujos conceptuales, no CAD de producción controlado.",
+      "gallery.item3Title": "Envolvente dimensional propuesta",
+      "gallery.item3Text": "La lámina registra una huella inicial de aproximadamente 98 × 68 mm y un perfil de 18,5 mm. Son datos históricos de diseño, no especificaciones finales.",
+      "gallery.item4Title": "Concepto de PCBA del controlador",
+      "gallery.item4Text": "El estudio combina vistas de diseño, diagrama de bloques, objetivos eléctricos, pines, arquitectura de corriente y una pila propuesta de cuatro capas. No es un diseño liberado ni listo para fabricar.",
+      "gallery.item5Title": "Esquema de control del sistema",
+      "gallery.item5Text": "Un mapa funcional preliminar conecta electrodos, controlador de salida, microcontrolador, alimentación, sensores, registro y conexión inalámbrica. No demuestra control en lazo cerrado ni comportamiento a prueba de fallos.",
+      "gallery.item6Title": "Envolvente preliminar de diseño",
+      "gallery.item6Text": "Una lámina de trabajo registra supuestos provisionales sobre materiales, electricidad, batería, comunicaciones y regulación. No constituye rendimiento verificado ni autorización comercial.",
+      "gallery.item7Title": "Exploración de color y acabado",
+      "gallery.item7Text": "Arctic White, Graphite Gray y Sage Green prueban identidades visuales distintas. Las etiquetas de mercado incrustadas son exploratorias, no categorías de producto ni designaciones regulatorias.",
+      "gallery.question2": "Conciliar formas, dimensiones, posiciones de electrodos, tamaños del controlador y estrategias de cableado contradictorias en una arquitectura mecánica controlada.",
+      "gallery.note": "Seleccione una lámina para abrirla a resolución completa. Los ocho WebP mostrados se decodifican por completo en las comprobaciones de pull request y despliegue. La arquitectura, los materiales, el rendimiento, las afirmaciones, la seguridad y la clasificación siguen sujetos a validación."
+    }
+  };
 
-  Object.assign(english, {
-    "gallery.intro": "Seven updated development boards consolidate the mask form, layered architecture, controller electronics, dimensional study, system logic and colour exploration into one coherent record. Each board is displayed without destructive cropping or browser-side raster enlargement.",
-    "gallery.item1Text": "A system-level design study linking scan-derived facial geometry to an integrated flexible shell and electrode cassette, with the controller and enclosure treated as a separate module. The architecture remains subject to fit, targeting, safety, packaging and usability validation.",
-    "gallery.item2Text": "A consistent mask form shown from exterior, interior, side, front and perspective viewpoints. The study supports discussion of facial coverage, ventilation, strap anchoring, assembly access and the relationship between shell geometry and electrode placement.",
-    "gallery.item4Text": "The supplied controller-board study shows component-side, solder-side and isometric views together with the system block diagram, electrical targets, connector pinouts, current-driver architecture and four-layer stack-up. Component identities, current ranges, compliance voltage, isolation architecture, connector pinout and board stack remain provisional engineering assumptions.",
-    "gallery.note": "Select a board to open its full-resolution artwork. All seven supplied raster boards are served at their native pixel dimensions without destructive cropping. Final architecture, materials, performance, claims, safety controls and classification will be determined through engineering, human-factors, evidence and jurisdiction-specific review."
+  Object.entries(copy).forEach(([language, values]) => {
+    dictionaries[language] = dictionaries[language] || {};
+    Object.assign(dictionaries[language], values);
   });
 })();
