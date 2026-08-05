@@ -1,7 +1,7 @@
 name: Deploy GitHub Pages
 
-# Deployment and evidence checks intentionally run in one closed verification loop.
-# Pull requests run only the repository-level asset gate; main-branch pushes deploy.
+# Pull requests validate repository assets. Main-branch pushes deploy and verify
+# the exact HTML and fully decoded WebP bytes served by GitHub Pages.
 on:
   push:
     branches: ["main"]
@@ -10,28 +10,33 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 concurrency:
-  group: pages-${{ github.event_name }}-${{ github.ref }}
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   validate:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Verify committed SerotoniX assets
-        run: python3 scripts/verify-serotonix-assets.py --root .
+      - name: Install image decoder
+        run: python3 -m pip install --disable-pip-version-check pillow==12.3.0
+
+      - name: Verify complete SerotoniX assets
+        run: python3 scripts/verify-serotonix-assets.py --root . --require-pillow
 
   deploy:
     if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -40,9 +45,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Verify committed SerotoniX assets
-        run: python3 scripts/verify-serotonix-assets.py --root .
 
       - name: Initialise deployment evidence
         run: |
@@ -53,7 +55,8 @@ jobs:
           cat > /tmp/serotonix-evidence-branch/status.json <<EOF
           {
             "commit_sha": "${GITHUB_SHA}",
-            "stage": "local-assets-verified",
+            "run_url": "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}",
+            "stage": "validation-started",
             "status": "running",
             "updated_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           }
@@ -61,6 +64,12 @@ jobs:
           git -C /tmp/serotonix-evidence-branch add status.json
           git -C /tmp/serotonix-evidence-branch commit -m "Start SerotoniX verification ${GITHUB_SHA}" || true
           git -C /tmp/serotonix-evidence-branch push origin deployment-verification
+
+      - name: Install image decoder
+        run: python3 -m pip install --disable-pip-version-check pillow==12.3.0
+
+      - name: Verify complete committed SerotoniX assets
+        run: python3 scripts/verify-serotonix-assets.py --root . --require-pillow
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -74,7 +83,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Verify live SerotoniX page and asset bytes
+      - name: Verify exact live page and fully decoded asset bytes
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
@@ -96,7 +105,7 @@ jobs:
             /tmp/serotonix-mobile.png \
             /tmp/serotonix-browser-verification.json
 
-      - name: Publish deployment evidence
+      - name: Publish successful deployment evidence
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
@@ -110,6 +119,7 @@ jobs:
           {
             "commit_sha": "${GITHUB_SHA}",
             "page_url": "${PAGE_URL%/}/serotonix.html",
+            "run_url": "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}",
             "stage": "live-browser-verification-complete",
             "status": "passed",
             "updated_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -121,13 +131,46 @@ jobs:
           - Commit: \`${GITHUB_SHA}\`
           - Pages base URL: ${PAGE_URL}
           - Page: ${PAGE_URL%/}/serotonix.html
+          - Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
           - Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-          The JSON reports contain direct-asset HTTP status, MIME type, byte hash,
-          natural dimensions, browser console/network results, rendered dimensions
-          and horizontal-overflow checks. The PNG files are full-page desktop and
-          mobile captures of the deployed page.
+          The JSON reports contain exact HTML and asset byte hashes, strict RIFF
+          container checks, full Pillow and browser decodes, natural and rendered
+          dimensions, console and network results, language switching, mobile
+          navigation and horizontal-overflow checks.
           EOF
           git -C "$EVIDENCE" add .
           git -C "$EVIDENCE" commit -m "Verify SerotoniX deployment ${GITHUB_SHA}"
           git -C "$EVIDENCE" push origin deployment-verification
+
+      - name: Publish failed deployment evidence
+        if: failure()
+        run: |
+          EVIDENCE=/tmp/serotonix-evidence-branch
+          if ! git -C "$EVIDENCE" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+            echo "Evidence worktree was not initialised; no failure record can be published."
+            exit 0
+          fi
+          git -C "$EVIDENCE" rm -rf . || true
+          for artifact in \
+            /tmp/serotonix-live-verification.json \
+            /tmp/serotonix-browser-verification.json \
+            /tmp/serotonix-desktop.png \
+            /tmp/serotonix-mobile.png
+          do
+            if [ -f "$artifact" ]; then
+              cp "$artifact" "$EVIDENCE"/
+            fi
+          done
+          cat > "$EVIDENCE/status.json" <<EOF
+          {
+            "commit_sha": "${GITHUB_SHA}",
+            "run_url": "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}",
+            "stage": "workflow-failed",
+            "status": "failed",
+            "updated_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+          git -C "$EVIDENCE" add .
+          git -C "$EVIDENCE" commit -m "Record failed SerotoniX verification ${GITHUB_SHA}" || true
+          git -C "$EVIDENCE" push origin deployment-verification || true
